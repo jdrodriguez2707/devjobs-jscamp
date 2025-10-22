@@ -1,0 +1,66 @@
+.jobs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--heading-border-color);
+  font-size: 1.6rem;
+  height: 6.4rem;
+  background-color: var(--primary-color);
+}
+
+.jobs-header__left-container {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+.jobs-header__title {
+  font-size: 2rem;
+}
+
+.jobs-header__nav-list {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+
+.jobs-header__nav-link {
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.jobs-header__nav-link:hover {
+  color: var(--tertiary-color);
+}
+
+.jobs-header__right-container {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.jobs-header__upload-cv-btn {
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.8rem;
+  font-weight: 500;
+  background-color: #0f2b45;
+  color: var(--tertiary-color);
+  transition: all 0.3s ease;
+}
+
+.jobs-header__upload-cv-btn:hover {
+  background-color: var(--tertiary-color);
+  color: var(--primary-text-color);
+}
+
+.jobs-header__profile-image {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
