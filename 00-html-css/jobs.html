@@ -31,18 +31,20 @@
   </header>
 
   <main>
-    <section>
-      <h1>Encuentra tu próximo trabajo</h1>
-      <p>Explora miles de oportunidades en el sector tecnológico.</p>
-      <form role="search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4bdc8"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-search">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-          <path d="M21 21l-6 -6" />
-        </svg>
-        <input type="search" placeholder="Buscar trabajos, empresas o habilidades" required>
+    <section class="search-job">
+      <h1 class="search-job__title">Encuentra tu próximo trabajo</h1>
+      <p class="search-job__description">Explora miles de oportunidades en el sector tecnológico.</p>
+      <form role="search" class="search-job__search-form">
+        <div class="search-job__search-container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#6a717f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+          <input class="search-job__search-input" type="search" placeholder="Buscar trabajos, empresas o habilidades" required>
+        </div>
 
         <div>
           <select name="tecnologia" id="tecnologia">

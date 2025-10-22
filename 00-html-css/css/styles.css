@@ -96,9 +96,10 @@
 
 .hero__title {
   font-size: 6rem;
+  font-weight: 800;
 }
 
-.hero__paragraph {
+.hero__description {
   color: var(--secondary-text-color);
   font-size: 2rem;
 }
@@ -127,12 +128,10 @@
 
 .hero__search-input::placeholder {
   color: #64748b;
+  font-weight: 500;
 }
 
-.hero__search-input:focus {
-  color: var(--primary-text-color);
-}
-
+.hero__search-input:focus,
 .hero__search-input:not(:placeholder-shown) {
   color: var(--primary-text-color);
 }
