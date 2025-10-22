@@ -4,6 +4,7 @@
   --tertiary-color: #1173d4;
   --primary-text-color: #fff;
   --secondary-text-color: #b4bdc8;
+  --heading-border-color: #212a32;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
-  border-bottom: 1px solid #212a32;
+  border-bottom: 1px solid var(--heading-border-color);
   font-size: 1.6rem;
   height: 6.4rem;
   background-color: var(--primary-color);
@@ -219,7 +220,7 @@ body {
 }
 
 .feature-card__icon {
-  color: #1172d1;
+  color: var(--tertiary-color);
   width: 32px;
   height: 32px;
 }
@@ -237,7 +238,7 @@ body {
 .main-footer {
   margin-top: auto;
   padding: 2rem 0;
-  border-top: 1px solid #212a32;
+  border-top: 1px solid var(--heading-border-color);
   text-align: center;
   font-size: 1.6rem;
   color: var(--secondary-text-color);
