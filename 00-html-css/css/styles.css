@@ -81,7 +81,7 @@ body {
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  background-image: url("../background.webp");
+  background-image: url("../assets/background.webp");
   background-position: center;
   background-size: cover;
   height: 50rem;

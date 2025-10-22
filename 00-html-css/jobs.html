@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevJobs - Encuentra el trabajo de tus sueños</title>
+</head>
+
+<body>
+  <header class="jobs-header">
+    <h2 class="jobs-header__title">DevJobs</h2>
+
+    <nav>
+      <ul class="jobs-header__nav-list">
+        <li><a class="jobs-header__nav-link" href="">Inicio</a></li>
+        <li><a class="jobs-header__nav-link" href="">Empleos</a></li>
+        <li><a class="jobs-header__nav-link" href="">Empresas</a></li>
+        <li><a class="jobs-header__nav-link" href="">Salarios</a></li>
+      </ul>
+    </nav>
+
+    <div class="jobs-header__right-container">
+      <a class="jobs-header__upload-cv-btn" href="">Subir CV</a>
+      <img src="./assets/profile.webp" width="80" alt="Imagen de perfil">
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h1>Encuentra tu próximo trabajo</h1>
+      <p>Explora miles de oportunidades en el sector tecnológico.</p>
+      <form role="search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4bdc8"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+          <path d="M21 21l-6 -6" />
+        </svg>
+        <input type="search" placeholder="Buscar trabajos, empresas o habilidades" required>
+
+        <div>
+          <select name="tecnologia" id="tecnologia">
+            <option value="">Tecnología</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+          <select name="ubicacion" id="ubicacion">
+            <option value="">Ubicación</option>
+            <option value="remoto">En remoto</option>
+            <option value="presencial">Presencial</option>
+          </select>
+          <select name="tipo-contrato" id="tipo-contrato">
+            <option value="">Tipo de contrato</option>
+            <option value="temporal">Temporal</option>
+            <option value="indefinido">Indefinido</option>
+          </select>
+          <select name="nivel-experiencia" id="nivel-experiencia">
+            <option value="">Nivel de experiencia</option>
+            <option value="junior">Junior</option>
+            <option value="mid">Mid</option>
+            <option value="senior">Senior</option>
+          </select>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Resultados de búsqueda</h2>
+      <div>
+        <article>
+          <h3>Ingeniero de software</h3>
+          <p>
+            <span>Tech solutions Inc.</span> |
+            <span>Remoto</span>
+          </p>
+          <p>Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y
+            Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación.
+          </p>
+          <a href="">Aplicar</a>
+        </article>
+        <article>
+          <h3>Analista de Datos</h3>
+          <p>
+            <span>Data Driven Co.</span> |
+            <span>Ciudad de México</span>
+          </p>
+          <p>Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos de datos y
+            herramientas de visualización. Se requiere conocimiento en SQL, Python y R.</p>
+          <a href="">Aplicar</a>
+        </article>
+        <article>
+          <h3>Desarrollador de Aplicaciones Móviles</h3>
+          <p>
+            <span>App Creators Ltd.</span> |
+            <span>Barcelona</span>
+          </p>
+          <p>Buscamos un desarrollador de aplicaciones móviles con experiencia en iOS y/o Android. El candidato debe
+            tener conocimientos en Swift, Kotlin y el desarrollo de interfaces de usuario.</p>
+          <a href="">Aplicar</a>
+        </article>
+        <article>
+          <h3>Ingeniero de DevOps</h3>
+          <p>
+            <span>Cloud Solutions</span> |
+            <span>Remoto</span>
+          </p>
+          <p>Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube,
+            automatización de procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure o
+            GCP.</p>
+          <a href="">Aplicar</a>
+        </article>
+      </div>
+
+      <nav aria-label="Paginación de resultados de búsqueda">
+        <ul>
+          <li>
+            <a href="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 6l-6 6l6 6" />
+              </svg>
+            </a>
+          </li>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+          <li><a href="">4</a></li>
+          <li><a href="">5</a></li>
+          <li>
+            <a href="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 6l6 6l-6 6" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 DevJobs. Todos los derechos reservados.</small>
+  </footer>
+</body>
+
+</html>
