@@ -209,6 +209,18 @@ body {
   background-color: var(--secondary-color);
 }
 
+.feature-card__icon-container {
+  padding: 12px;
+  border-radius: 100%;
+  background-color: #1b3759;
+}
+
+.feature-card__icon {
+  color: #1172d1;
+  width: 32px;
+  height: 32px;
+}
+
 .feature-card__title {
   margin: 2rem 0 1rem;
   font-size: 2rem;
