@@ -30,7 +30,7 @@
     </div>
   </header>
 
-  <main>
+  <main class="main-container">
     <section class="search-job">
       <h1 class="search-job__title">Encuentra tu próximo trabajo</h1>
       <p class="search-job__description">Explora miles de oportunidades en el sector tecnológico.</p>
@@ -43,32 +43,68 @@
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
             <path d="M21 21l-6 -6" />
           </svg>
-          <input class="search-job__search-input" type="search" placeholder="Buscar trabajos, empresas o habilidades" required>
+          <input class="search-job__search-input" type="search" placeholder="Buscar trabajos, empresas o habilidades"
+            required>
         </div>
 
-        <div>
-          <select name="tecnologia" id="tecnologia">
-            <option value="">Tecnología</option>
-            <option value="html">HTML</option>
-            <option value="css">CSS</option>
-            <option value="javascript">JavaScript</option>
-          </select>
-          <select name="ubicacion" id="ubicacion">
-            <option value="">Ubicación</option>
-            <option value="remoto">En remoto</option>
-            <option value="presencial">Presencial</option>
-          </select>
-          <select name="tipo-contrato" id="tipo-contrato">
-            <option value="">Tipo de contrato</option>
-            <option value="temporal">Temporal</option>
-            <option value="indefinido">Indefinido</option>
-          </select>
-          <select name="nivel-experiencia" id="nivel-experiencia">
-            <option value="">Nivel de experiencia</option>
-            <option value="junior">Junior</option>
-            <option value="mid">Mid</option>
-            <option value="senior">Senior</option>
-          </select>
+        <div class="search-job__filters-container">
+          <div class="search-job__filter-item">
+            <select class="search-job__filter-select" name="tecnologia" id="tecnologia">
+              <option value="">Tecnología</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="javascript">JavaScript</option>
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="search-job__filter-icon">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6 9l6 6l6 -6" />
+            </svg>
+          </div>
+
+          <div class="search-job__filter-item">
+            <select class="search-job__filter-select" name="ubicacion" id="ubicacion">
+              <option value="">Ubicación</option>
+              <option value="remoto">En remoto</option>
+              <option value="presencial">Presencial</option>
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="search-job__filter-icon">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6 9l6 6l6 -6" />
+            </svg>
+          </div>
+
+          <div class="search-job__filter-item">
+            <select class="search-job__filter-select" name="tipo-contrato" id="tipo-contrato">
+              <option value="">Tipo de contrato</option>
+              <option value="temporal">Temporal</option>
+              <option value="indefinido">Indefinido</option>
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="search-job__filter-icon">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6 9l6 6l6 -6" />
+            </svg>
+          </div>
+
+          <div class="search-job__filter-item">
+            <select class="search-job__filter-select" name="nivel-experiencia" id="nivel-experiencia">
+              <option value="">Nivel de experiencia</option>
+              <option value="junior">Junior</option>
+              <option value="mid">Mid</option>
+              <option value="senior">Senior</option>
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="search-job__filter-icon">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6 9l6 6l6 -6" />
+            </svg>
+          </div>
         </div>
       </form>
     </section>

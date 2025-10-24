@@ -63,6 +63,12 @@
   height: 4.8rem;
   border-radius: 100%;
   object-fit: cover;
+  cursor: pointer;
+}
+
+.main-container {
+  margin-top: 4rem;
+  padding: 0 2rem;
 }
 
 .search-job {
@@ -71,7 +77,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20rem;
 }
 
 .search-job__title {
@@ -85,6 +90,7 @@
 
 .search-job__search-form {
   width: 100%;
+  max-width: 800px;
 }
 
 .search-job__search-container {
@@ -115,4 +121,35 @@
 .search-job__search-input:focus,
 .search-job__search-input:not(:placeholder-shown) {
   color: var(--primary-text-color);
+}
+
+.search-job__filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.search-job__filter-item {
+  position: relative;
+}
+
+.search-job__filter-select {
+  appearance: none;
+  padding: 0.8rem 4rem 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--secondary-text-color);
+  background-color: #242d3a;
+}
+
+.search-job__filter-icon {
+  position: absolute;
+  top: 11px;
+  right: 14px;
+  color: var(--secondary-text-color);
+  width: 16px;
+  pointer-events: none;
 }
