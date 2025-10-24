@@ -210,3 +210,36 @@
 .search-results__job-card-apply-btn:hover {
   background-color: #0d5bb5;
 }
+
+.search-results__pagination {
+  margin-top: 4rem;
+}
+
+.search-results__pagination-list {
+  gap: 1rem;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-results__pagination-link {
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+}
+
+.search-results__pagination-link:hover {
+  background-color: var(--tertiary-color);
+  color: var(--primary-text-color);
+}
+
+.search-results__pagination-icon {
+  margin: 0 1rem;
+  color: var(--secondary-text-color);
+  width: 18px;
+}
