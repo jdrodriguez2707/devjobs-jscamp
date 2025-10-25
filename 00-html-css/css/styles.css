@@ -24,11 +24,17 @@
   color: var(--secondary-text-color);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
-}
+  transition: color 0.3s, font-size 0.3s;
 
-.main-header__nav-link:hover {
-  color: var(--tertiary-color);
+  &:hover,
+  &:focus {
+    color: var(--tertiary-color);
+    outline: none;
+  }
+
+  &:active {
+    font-size: 1.5rem;
+  }
 }
 
 .main-header__right-btn-container {
@@ -48,21 +54,37 @@
   background-color: var(--btn-color);
   color: var(--tertiary-color);
   transition: background-color 0.3s, color 0.3s;
-}
 
-.main-header__right-btn--post-job-offer:hover {
-  background-color: var(--tertiary-color);
-  color: var(--primary-text-color);
+  &:hover {
+    background-color: var(--tertiary-color);
+    color: var(--primary-text-color);
+  }
+
+  &:focus {
+    outline: 1px solid var(--tertiary-color);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .main-header__right-btn--login {
   background-color: #334155;
   color: var(--primary-text-color);
   transition: background-color 0.3s;
-}
 
-.main-header__right-btn--login:hover {
-  background-color: var(--secondary-color);
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+
+  &:focus {
+    outline: 1px solid var(--tertiary-color);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .hero {
@@ -128,16 +150,16 @@
   margin: 1rem;
   outline: none;
   width: 100%;
-}
 
-.hero__search-input::placeholder {
-  color: #64748b;
-  font-weight: 500;
-}
+  &::placeholder {
+    color: #64748b;
+    font-weight: 500;
+  }
 
-.hero__search-input:focus,
-.hero__search-input:not(:placeholder-shown) {
-  color: var(--primary-text-color);
+  &:focus,
+  &:not(:placeholder-shown) {
+    color: var(--primary-text-color);
+  }
 }
 
 .hero__submit-button {
@@ -150,10 +172,18 @@
   padding: 0.8rem 1.8rem;
   cursor: pointer;
   transition: background-color 0.3s;
-}
 
-.hero__submit-button:hover {
-  background-color: #0d5bb5;
+  &:hover {
+    background-color: #0d5bb5;
+  }
+
+  &:focus {
+    outline: 1px solid var(--primary-text-color);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .features {

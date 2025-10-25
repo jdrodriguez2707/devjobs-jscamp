@@ -31,10 +31,16 @@
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
-}
 
-.jobs-header__nav-link:hover {
-  color: var(--tertiary-color);
+  &:hover,
+  &:focus {
+    color: var(--tertiary-color);
+    outline: none;
+  }
+
+  &:active {
+    font-size: 1.5rem;
+  }
 }
 
 .jobs-header__right-container {
@@ -51,11 +57,19 @@
   background-color: var(--btn-color);
   color: var(--tertiary-color);
   transition: background-color 0.3s, color 0.3s;
-}
 
-.jobs-header__upload-cv-btn:hover {
-  background-color: var(--tertiary-color);
-  color: var(--primary-text-color);
+  &:hover {
+    background-color: var(--tertiary-color);
+    color: var(--primary-text-color);
+  }
+
+  &:focus {
+    outline: 1px solid var(--tertiary-color);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .jobs-header__profile-image {
@@ -114,16 +128,16 @@
   margin: 1rem;
   outline: none;
   width: 100%;
-}
 
-.search-job__search-input::placeholder {
-  color: #4a5360;
-  font-weight: 500;
-}
+  &::placeholder {
+    color: #4a5360;
+    font-weight: 500;
+  }
 
-.search-job__search-input:focus,
-.search-job__search-input:not(:placeholder-shown) {
-  color: var(--primary-text-color);
+  &:focus,
+  &:not(:placeholder-shown) {
+    color: var(--primary-text-color);
+  }
 }
 
 .search-job__filters-container {
@@ -146,6 +160,11 @@
   font-weight: 500;
   color: var(--secondary-text-color);
   background-color: #242d3a;
+  cursor: pointer;
+
+  &:focus {
+    outline: 1px solid var(--tertiary-color);
+  }
 }
 
 .search-job__filter-icon {
@@ -208,10 +227,19 @@
   transition: background-color 0.3s;
   text-decoration: none;
   background-color: var(--tertiary-color);
-}
 
-.search-results__job-card-apply-btn:hover {
-  background-color: #0d5bb5;
+  &:hover {
+    background-color: #0d5bb5;
+  }
+
+  &:focus {
+    outline: 1px solid var(--primary-text-color);
+    outline-offset: 0;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .search-results__pagination {
@@ -234,11 +262,20 @@
   transition: background-color 0.3s, color 0.3s;
   padding: 0.8rem 1.6rem;
   border-radius: 8px;
-}
+  cursor: pointer;
 
-.search-results__pagination-link:hover {
-  background-color: var(--tertiary-color);
-  color: var(--primary-text-color);
+  &:hover {
+    background-color: var(--tertiary-color);
+    color: var(--primary-text-color);
+  }
+
+  &:focus {
+    outline: 1px solid var(--tertiary-color);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .search-results__pagination-icon {
