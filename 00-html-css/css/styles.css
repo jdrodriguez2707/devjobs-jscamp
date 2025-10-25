@@ -45,9 +45,9 @@
 }
 
 .main-header__right-btn--post-job-offer {
-  background-color: #0f2b45;
+  background-color: var(--btn-color);
   color: var(--tertiary-color);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .main-header__right-btn--post-job-offer:hover {
@@ -58,7 +58,7 @@
 .main-header__right-btn--login {
   background-color: #334155;
   color: var(--primary-text-color);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .main-header__right-btn--login:hover {
@@ -145,7 +145,7 @@
   font-weight: bold;
   padding: 0.8rem 1.8rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .hero__submit-button:hover {
