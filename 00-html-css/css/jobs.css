@@ -185,7 +185,7 @@
 }
 
 .search-results__title {
-  margin: 2.4rem 0;
+  margin-block: 2.4rem;
   font-size: 2.4rem;
 }
 
@@ -287,7 +287,7 @@
 }
 
 .search-results__pagination-icon {
-  margin: 0 1rem;
+  margin-inline: 1rem;
   color: var(--secondary-text-color);
   width: 18px;
 }
