@@ -117,6 +117,10 @@
   background-color: var(--secondary-color);
 }
 
+.hero__search-icon {
+  color: #b4bdc8;
+}
+
 .hero__search-input {
   background: none;
   border: none;

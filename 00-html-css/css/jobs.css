@@ -103,6 +103,10 @@
   background-color: #18212d;
 }
 
+.search-job__search-icon {
+  color: #b4bdc8;
+}
+
 .search-job__search-input {
   background: none;
   border: none;
