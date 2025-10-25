@@ -11,7 +11,15 @@
 }
 
 .main-header__title {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
   font-size: 2rem;
+}
+
+.main-header__logo {
+  color: var(--tertiary-color);
+  width: 32px;
 }
 
 .main-header__nav-list {

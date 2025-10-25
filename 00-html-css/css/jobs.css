@@ -17,7 +17,15 @@
 }
 
 .jobs-header__title {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
   font-size: 2rem;
+}
+
+.jobs-header__logo {
+  color: var(--tertiary-color);
+  width: 32px;
 }
 
 .jobs-header__nav-list {
