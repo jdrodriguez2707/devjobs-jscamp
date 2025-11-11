@@ -240,10 +240,7 @@
   &.is-applied {
     background-color: var(--secondary-btn-color);
     transition: background-color 0.3s;
-
-    &:hover {
-      background-color: var(--heading-border-color);
-    }
+    pointer-events: none;
   }
 
   &:hover {
