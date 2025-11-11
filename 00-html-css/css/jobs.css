@@ -62,7 +62,7 @@
   border-radius: 8px;
   padding: 0.6rem 1.8rem;
   font-weight: 500;
-  background-color: var(--btn-color);
+  background-color: var(--primary-btn-color);
   color: var(--tertiary-color);
   transition: background-color 0.3s, color 0.3s;
 
@@ -167,7 +167,7 @@
   font-size: 1.4rem;
   font-weight: 500;
   color: var(--secondary-text-color);
-  background-color: #242d3a;
+  background-color: var(--secondary-btn-color);
   cursor: pointer;
 
   &:focus {
@@ -202,6 +202,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 4rem;
   padding: 2.4rem;
   border-bottom: 1px solid var(--jobs-border-color);
 }
@@ -236,14 +237,23 @@
   text-decoration: none;
   background-color: var(--tertiary-color);
 
+  &.is-applied {
+    background-color: var(--secondary-btn-color);
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--heading-border-color);
+    }
+  }
+
   &:hover {
     background-color: #0d5bb5;
   }
 
-  &:focus {
+  /* &:focus {
     outline: 1px solid var(--primary-text-color);
     outline-offset: 0;
-  }
+  } */
 
   &:active {
     transform: scale(0.98);
@@ -332,8 +342,4 @@
   font-size: 1.6rem;
   color: var(--secondary-text-color);
   background-color: var(--primary-color);
-}
-
-#button {
-  background-color: #09f;
 }

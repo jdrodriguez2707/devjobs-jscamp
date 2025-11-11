@@ -59,7 +59,7 @@
 }
 
 .main-header__right-btn--post-job-offer {
-  background-color: var(--btn-color);
+  background-color: var(--primary-btn-color);
   color: var(--tertiary-color);
   transition: background-color 0.3s, color 0.3s;
 
