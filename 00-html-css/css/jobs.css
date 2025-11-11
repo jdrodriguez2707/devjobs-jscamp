@@ -340,3 +340,11 @@
   color: var(--secondary-text-color);
   background-color: var(--primary-color);
 }
+
+.visible {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}

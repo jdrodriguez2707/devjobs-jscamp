@@ -86,8 +86,9 @@
           </div>
 
           <div class="search-job__filter-item">
-            <select class="search-job__filter-select" name="ubicacion" id="ubicacion">
-              <option value="">Ubicación</option>
+            <select class="search-job__filter-select" name="ubicacion" id="filter-location">
+              <option value="" hidden>Ubicación</option>
+              <option value="">Todas las ubicaciones</option>
               <option value="remoto">En remoto</option>
               <option value="presencial">Presencial</option>
             </select>
@@ -137,7 +138,7 @@
     <section class="search-results">
       <h2 class="search-results__title">Resultados de búsqueda</h2>
       <div class="search-results__jobs-container">
-        <article class="search-results__job-card">
+        <article class="search-results__job-card" data-location="remoto">
           <div>
             <h3 class="search-results__job-card-title">Ingeniero de software</h3>
             <p class="search-results__job-card-company">
@@ -152,7 +153,7 @@
           </div>
           <button class="search-results__job-card-apply-btn">Aplicar</button>
         </article>
-        <article class="search-results__job-card">
+        <article class="search-results__job-card" data-location="presencial">
           <div>
             <h3 class="search-results__job-card-title">Analista de Datos</h3>
             <p class="search-results__job-card-company">
@@ -165,7 +166,7 @@
           </div>
           <button class="search-results__job-card-apply-btn">Aplicar</button>
         </article>
-        <article class="search-results__job-card">
+        <article class="search-results__job-card" data-location="presencial">
           <div>
             <h3 class="search-results__job-card-title">Desarrollador de Aplicaciones Móviles</h3>
             <p class="search-results__job-card-company">
@@ -178,7 +179,7 @@
           </div>
           <button class="search-results__job-card-apply-btn">Aplicar</button>
         </article>
-        <article class="search-results__job-card">
+        <article class="search-results__job-card" data-location="remoto">
           <div>
             <h3 class="search-results__job-card-title">Ingeniero de DevOps</h3>
             <p class="search-results__job-card-company">
