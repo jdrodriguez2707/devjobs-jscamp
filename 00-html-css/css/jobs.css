@@ -333,3 +333,7 @@
   color: var(--secondary-text-color);
   background-color: var(--primary-color);
 }
+
+#button {
+  background-color: #09f;
+}
