@@ -70,11 +70,13 @@
 
         <div class="search-job__filters-container">
           <div class="search-job__filter-item">
-            <select class="search-job__filter-select" name="tecnologia" id="tecnologia">
+            <select class="search-job__filter-select" name="technology" id="technology">
               <option value="">Tecnología</option>
-              <option value="html">HTML</option>
-              <option value="css">CSS</option>
+              <option value="">Todas las tecnologías</option>
               <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="kotlin">Kotlin</option>
+              <option value="aws">AWS</option>
             </select>
             <!-- Icono de flecha hacia abajo -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -86,8 +88,8 @@
           </div>
 
           <div class="search-job__filter-item">
-            <select class="search-job__filter-select" name="ubicacion" id="filter-location">
-              <option value="" hidden>Ubicación</option>
+            <select class="search-job__filter-select" name="location" id="location">
+              <option value="">Ubicación</option>
               <option value="">Todas las ubicaciones</option>
               <option value="remoto">En remoto</option>
               <option value="presencial">Presencial</option>
@@ -102,8 +104,9 @@
           </div>
 
           <div class="search-job__filter-item">
-            <select class="search-job__filter-select" name="tipo-contrato" id="tipo-contrato">
+            <select class="search-job__filter-select" name="contract" id="contract">
               <option value="">Tipo de contrato</option>
+              <option value="">Cualquier tipo de contrato</option>
               <option value="temporal">Temporal</option>
               <option value="indefinido">Indefinido</option>
             </select>
@@ -117,8 +120,10 @@
           </div>
 
           <div class="search-job__filter-item">
-            <select class="search-job__filter-select" name="nivel-experiencia" id="nivel-experiencia">
+            <select class="search-job__filter-select" name="experience" id="experience">
               <option value="">Nivel de experiencia</option>
+              <option value="">Cualquier nivel de experiencia</option>
+              <option value="sin-experiencia">Sin experiencia</option>
               <option value="junior">Junior</option>
               <option value="mid">Mid</option>
               <option value="senior">Senior</option>
@@ -138,7 +143,8 @@
     <section class="search-results">
       <h2 class="search-results__title">Resultados de búsqueda</h2>
       <div class="search-results__jobs-container">
-        <article class="search-results__job-card" data-location="remoto">
+        <article class="search-results__job-card" data-location="remoto" data-technology="javascript"
+          data-contract="indefinido" data-experience="sin-experiencia">
           <div>
             <h3 class="search-results__job-card-title">Ingeniero de software</h3>
             <p class="search-results__job-card-company">
@@ -153,7 +159,8 @@
           </div>
           <button class="search-results__job-card-apply-btn">Aplicar</button>
         </article>
-        <article class="search-results__job-card" data-location="presencial">
+        <article class="search-results__job-card" data-location="presencial" data-technology="python"
+          data-contract="temporal" data-experience="junior">
           <div>
             <h3 class="search-results__job-card-title">Analista de Datos</h3>
             <p class="search-results__job-card-company">
@@ -166,7 +173,8 @@
           </div>
           <button class="search-results__job-card-apply-btn">Aplicar</button>
         </article>
-        <article class="search-results__job-card" data-location="presencial">
+        <article class="search-results__job-card" data-location="presencial" data-technology="kotlin"
+          data-contract="indefinido" data-experience="mid">
           <div>
             <h3 class="search-results__job-card-title">Desarrollador de Aplicaciones Móviles</h3>
             <p class="search-results__job-card-company">
@@ -179,7 +187,8 @@
           </div>
           <button class="search-results__job-card-apply-btn">Aplicar</button>
         </article>
-        <article class="search-results__job-card" data-location="remoto">
+        <article class="search-results__job-card" data-location="remoto" data-technology="aws" data-contract="temporal"
+          data-experience="senior">
           <div>
             <h3 class="search-results__job-card-title">Ingeniero de DevOps</h3>
             <p class="search-results__job-card-company">
