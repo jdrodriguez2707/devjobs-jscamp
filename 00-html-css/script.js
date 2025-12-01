@@ -11,14 +11,8 @@ searchResultsJobs?.addEventListener("click", (event) => {
   }
 });
 
-searchFiltersContainer?.addEventListener("change", (event) => {
+searchFiltersContainer?.addEventListener("change", () => {
   if (!document.querySelector(".search-job__clear-filter-btn")) showClearFilterButton();
-
-  // Ocultar primer option por defecto y mostrar opción sin filtro (Todas las opciones) para cada select cuando cambie
-  const selectOptions = event.target.children;
-  selectOptions[0].hidden = true;
-  selectOptions[1].hidden = false;
-
   filterJobOffers();
 });
 
@@ -36,9 +30,6 @@ function clearFilters(filterButton) {
   filterButton.remove();
   filterSelects.forEach((filterSelect) => {
     filterSelect.value = "";
-    // Reiniciar opciones de cada select al estado inicial
-    filterSelect.children[0].hidden = false;
-    filterSelect.children[1].hidden = true;
   });
   filterJobOffers();
 }
@@ -48,6 +39,7 @@ function filterJobOffers() {
   filterSelects.forEach((filterSelect) => {
     filterValues[filterSelect.id] = filterSelect.value;
   });
+
   console.log(filterValues);
 
   // Convertir a Array para poder usar bucle for
