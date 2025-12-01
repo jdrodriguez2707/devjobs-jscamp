@@ -1,4 +1,6 @@
 const searchResultsJobs = document.querySelector(".search-results__jobs-container");
+const searchFiltersContainer = document.querySelector(".search-job__filters-container");
+const filterSelects = document.querySelectorAll(".search-job__filter-select");
 
 searchResultsJobs?.addEventListener("click", (event) => {
   const element = event.target;
@@ -9,49 +11,54 @@ searchResultsJobs?.addEventListener("click", (event) => {
   }
 });
 
-const searchFilters = document.querySelector(".search-job__filters-container");
+searchFiltersContainer?.addEventListener("change", (event) => {
+  if (!document.querySelector(".search-job__clear-filter-btn")) showClearFilterButton();
 
-// searchFilters.addEventListener("change", (event) => {
-//   const filter = event.target;
-//   filter.children[0].hidden = true; // Ocultar primer option por defecto cuando el select cambie
-//   const filterValue = filter.value;
-//   const jobList = Array.from(searchResultsJobs.children); // Convertir a Array para poder usar forEach
-//   const filterId = filter.id; // Obtener id del select seleccionado para acceder al dataset en especifico
-
-//   jobList.forEach((job) => {
-//     if (filterValue === job.dataset[filterId]) {
-//       job.classList.remove("hidden");
-//       job.classList.add("visible");
-//     } else if (filterValue && filterValue !== job.dataset[filterId]) {
-//       job.classList.remove("visible");
-//       job.classList.add("hidden");
-//     } else {
-//       job.classList.remove("hidden");
-//       job.classList.add("visible");
-//     }
-//   });
-// });
-
-searchFilters.addEventListener("change", (event) => {
+  // Ocultar primer option por defecto y mostrar opción sin filtro (Todas las opciones) para cada select cuando cambie
   const selectOptions = event.target.children;
-  selectOptions[0].hidden = true; // Ocultar primer option por defecto cuando el select cambie
+  selectOptions[0].hidden = true;
   selectOptions[1].hidden = false;
-  const selects = Array.from(document.querySelectorAll(".search-job__filter-select"));
-  const selectValues = {};
-  selects.forEach((select) => {
-    selectValues[select.id] = select.value;
-  });
-  console.log(selectValues);
 
-  const jobList = Array.from(searchResultsJobs.children); // Convertir a Array para poder usar forEach
+  filterJobOffers();
+});
+
+function showClearFilterButton() {
+  const clearFilterButton = document.createElement("button");
+  clearFilterButton.classList.add("search-job__clear-filter-btn");
+  clearFilterButton.textContent = "Limpiar filtros";
+  clearFilterButton.ariaLabel = "Botón para limpiar filtros de búsqueda de ofertas de trabajo";
+  clearFilterButton.type = "button";
+  clearFilterButton.onclick = (event) => clearFilters(event.currentTarget);
+  searchFiltersContainer.appendChild(clearFilterButton);
+}
+
+function clearFilters(filterButton) {
+  filterButton.remove();
+  filterSelects.forEach((filterSelect) => {
+    filterSelect.value = "";
+    // Reiniciar opciones de cada select al estado inicial
+    filterSelect.children[0].hidden = false;
+    filterSelect.children[1].hidden = true;
+  });
+  filterJobOffers();
+}
+
+function filterJobOffers() {
+  const filterValues = {};
+  filterSelects.forEach((filterSelect) => {
+    filterValues[filterSelect.id] = filterSelect.value;
+  });
+  console.log(filterValues);
+
+  // Convertir a Array para poder usar bucle for
+  const jobList = Array.from(searchResultsJobs.children);
 
   for (const job of jobList) {
-    console.log(job.dataset);
     if (
-      (job.dataset.technology === selectValues.technology || selectValues.technology === "") &&
-      (job.dataset.location === selectValues.location || selectValues.location === "") &&
-      (job.dataset.contract === selectValues.contract || selectValues.contract === "") &&
-      (job.dataset.experience === selectValues.experience || selectValues.experience === "")
+      (job.dataset.technology === filterValues.technology || filterValues.technology === "") &&
+      (job.dataset.location === filterValues.location || filterValues.location === "") &&
+      (job.dataset.contract === filterValues.contract || filterValues.contract === "") &&
+      (job.dataset.experience === filterValues.experience || filterValues.experience === "")
     ) {
       job.classList.remove("hidden");
       job.classList.add("visible");
@@ -60,4 +67,4 @@ searchFilters.addEventListener("change", (event) => {
       job.classList.add("hidden");
     }
   }
-});
+}

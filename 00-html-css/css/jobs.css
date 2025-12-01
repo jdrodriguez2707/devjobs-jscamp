@@ -184,6 +184,21 @@
   pointer-events: none;
 }
 
+.search-job__clear-filter-btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--primary-text-color);
+  background-color: var(--primary-btn-color);
+  cursor: pointer;
+
+  &:focus {
+    outline: 1px solid var(--tertiary-color);
+  }
+}
+
 .search-results__title {
   margin-block: 2.4rem;
   font-size: 2.4rem;
