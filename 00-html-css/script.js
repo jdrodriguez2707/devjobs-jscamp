@@ -40,23 +40,30 @@ function filterJobOffers() {
     filterValues[filterSelect.id] = filterSelect.value;
   });
 
-  console.log(filterValues);
-
-  // Convertir a Array para poder usar bucle for
+  // Convertir a Array para poder usar forEach
   const jobList = Array.from(searchResultsJobs.children);
 
-  for (const job of jobList) {
-    if (
-      (job.dataset.technology === filterValues.technology || filterValues.technology === "") &&
-      (job.dataset.location === filterValues.location || filterValues.location === "") &&
-      (job.dataset.contract === filterValues.contract || filterValues.contract === "") &&
-      (job.dataset.experience === filterValues.experience || filterValues.experience === "")
-    ) {
+  const filterKeys = Object.keys(filterValues);
+
+  jobList.forEach((job) => {
+    // Comprobar que la oferta de trabajo cumple con todos los filtros
+    const matchesAllFilters = filterKeys.every((filterKey) => {
+      if (job.dataset[filterKey]) {
+        const jobDatasetValue = job.dataset[filterKey];
+        return filterValues[filterKey] === jobDatasetValue || filterValues[filterKey] === "";
+      } else {
+        console.warn(`Job sin data-${filterKey}:`, job);
+        // Si el job no tiene este atributo, ocultarlo innmediatamente
+        return false;
+      }
+    });
+
+    if (matchesAllFilters) {
       job.classList.remove("hidden");
       job.classList.add("visible");
     } else {
       job.classList.remove("visible");
       job.classList.add("hidden");
     }
-  }
+  });
 }
