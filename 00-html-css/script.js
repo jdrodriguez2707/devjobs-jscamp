@@ -22,7 +22,7 @@ function showClearFilterButton() {
   clearFilterButton.textContent = "Limpiar filtros";
   clearFilterButton.ariaLabel = "Botón para limpiar filtros de búsqueda de ofertas de trabajo";
   clearFilterButton.type = "button";
-  clearFilterButton.onclick = (event) => clearFilters(event.currentTarget);
+  clearFilterButton.onclick = () => clearFilters(clearFilterButton);
   searchFiltersContainer.appendChild(clearFilterButton);
 }
 
@@ -40,30 +40,25 @@ function filterJobOffers() {
     filterValues[filterSelect.id] = filterSelect.value;
   });
 
-  // Convertir a Array para poder usar forEach
   const jobList = Array.from(searchResultsJobs.children);
 
   const filterKeys = Object.keys(filterValues);
 
   jobList.forEach((job) => {
-    // Comprobar que la oferta de trabajo cumple con todos los filtros
+    // Comprobar que la oferta de trabajo cumpla con todos los filtros
     const matchesAllFilters = filterKeys.every((filterKey) => {
       if (job.dataset[filterKey]) {
         const jobDatasetValue = job.dataset[filterKey];
         return filterValues[filterKey] === jobDatasetValue || filterValues[filterKey] === "";
       } else {
-        console.warn(`Job sin data-${filterKey}:`, job);
-        // Si el job no tiene este atributo, ocultarlo innmediatamente
+        // console.warn(`Job sin data-${filterKey}:`, job);
+        // Si el job no tiene este atributo, retonar false para que no cumpla con los filtros y se oculte en el DOM
         return false;
       }
     });
 
-    if (matchesAllFilters) {
-      job.classList.remove("hidden");
-      job.classList.add("visible");
-    } else {
-      job.classList.remove("visible");
-      job.classList.add("hidden");
-    }
+    // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
+    job.classList.toggle("visible", matchesAllFilters);
+    job.classList.toggle("hidden", !matchesAllFilters);
   });
 }
