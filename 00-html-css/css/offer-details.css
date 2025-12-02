@@ -14,6 +14,7 @@
   display: flex;
   gap: 4rem;
   align-items: center;
+  width: 100%;
 }
 
 .offer-details-header__title {
@@ -52,8 +53,48 @@
 
 .offer-details-header__right-container {
   display: flex;
-  gap: 1.6rem;
+  justify-content: flex-end;
   align-items: center;
+  gap: 1.6rem;
+  width: 100%;
+}
+
+.search-job__search-form {
+  width: 100%;
+  max-width: 36rem;
+}
+
+.search-job__search-container {
+  display: flex;
+  align-items: center;
+  padding: 0 1.2rem;
+  border: 1px solid var(--jobs-border-color);
+  border-radius: 8px;
+  height: 40px;
+  background-color: #18212d;
+}
+
+.search-job__search-icon {
+  color: #b4bdc8;
+}
+
+.search-job__search-input {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  margin: 1rem;
+  outline: none;
+  width: 100%;
+
+  &::placeholder {
+    color: #4a5360;
+    font-weight: 500;
+  }
+
+  &:focus,
+  &:not(:placeholder-shown) {
+    color: var(--primary-text-color);
+  }
 }
 
 .offer-details-header__upload-cv-btn {

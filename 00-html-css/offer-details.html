@@ -34,31 +34,33 @@
       </nav>
     </div>
 
-    <form role="search" class="search-job__search-form">
-      <div class="search-job__search-container">
-        <!-- Icono de búsqueda -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="search-job__search-icon">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-          <path d="M21 21l-6 -6" />
-        </svg>
-        <input class="search-job__search-input" type="search" placeholder="Buscar" required>
-      </div>
-    </form>
-
     <div class="offer-details-header__right-container">
+      <form role="search" class="search-job__search-form">
+        <div class="search-job__search-container">
+          <!-- Icono de búsqueda -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="search-job__search-icon">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+          <input class="search-job__search-input" type="search" placeholder="Buscar" name="search-job" required>
+        </div>
+      </form>
+
       <a class="offer-details-header__upload-cv-btn" href="">Subir CV</a>
       <img class="offer-details-header__profile-image" src="./assets/profile.webp" alt="Imagen de perfil">
     </div>
   </header>
 
-  <main>
-    <p><span>Empleos</span> / Ingeniero de Software Senior</p>
+  <main class="offer-details">
+    <p class="offer-details__breadcrumbs"><span
+        class="offer-details__breadcrumbs offer-details__breadcrumbs--current">Empleos / </span>Ingeniero de Software
+      Senior</p>
 
-    <article>
-      <header>
+    <article class="offer-details__content">
+      <header class="offer-details__content-header">
         <div>
           <h1>Ingeniero de Software Senior</h1>
           <p>Tech Solutions Inc. &bull; Remoto</p>
