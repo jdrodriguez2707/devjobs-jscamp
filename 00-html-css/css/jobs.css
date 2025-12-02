@@ -23,11 +23,6 @@
   font-size: 2rem;
 }
 
-.jobs-header__logo {
-  color: var(--tertiary-color);
-  width: 32px;
-}
-
 .jobs-header__nav-list {
   display: flex;
   gap: 3rem;
