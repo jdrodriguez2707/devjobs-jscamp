@@ -224,3 +224,7 @@
   color: var(--tertiary-color);
   display: inline-block;
 }
+
+.offer-details__responsability {
+  vertical-align: super;
+}
