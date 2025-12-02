@@ -223,8 +223,10 @@
 .offer-details__check-circle-icon {
   color: var(--tertiary-color);
   display: inline-block;
+  vertical-align: middle;
 }
 
 .offer-details__responsability {
-  vertical-align: super;
+  vertical-align: middle;
+  line-height: 2;
 }
