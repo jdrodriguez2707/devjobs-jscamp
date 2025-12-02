@@ -106,11 +106,7 @@
   background-position: center;
   background-size: cover;
   height: 50rem;
-  mask-image: linear-gradient(
-    to bottom,
-    var(--primary-color) 90%,
-    rgba(16, 25, 34, 0) 100%
-  );
+  mask-image: linear-gradient(to bottom, var(--primary-color) 90%, rgba(16, 25, 34, 0) 100%);
 
   &&::before {
     content: "";
@@ -257,14 +253,4 @@
 .feature-card__description {
   font-size: 1.6rem;
   color: var(--secondary-text-color);
-}
-
-.main-footer {
-  margin-top: auto;
-  padding: 2rem 0;
-  border-top: 1px solid var(--heading-border-color);
-  text-align: center;
-  font-size: 1.6rem;
-  color: var(--secondary-text-color);
-  background-color: var(--primary-color);
 }
