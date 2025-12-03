@@ -63,12 +63,14 @@
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
             <path d="M21 21l-6 -6" />
           </svg>
+          <label for="search-job" class="sr-only">Buscar ofertas de empleo</label>
           <input class="search-job__search-input" type="search" placeholder="Buscar trabajos, empresas o habilidades"
-            name="search-job" required>
+            name="search-job" id="search-job" required>
         </div>
 
         <div class="search-job__filters-container">
           <div class="search-job__filter-item">
+            <label for="technology" class="sr-only">Tecnología</label>
             <select class="search-job__filter-select" name="technology" id="technology">
               <option value="" hidden>Tecnología</option>
               <option value="">Todas las tecnologías</option>
@@ -87,6 +89,7 @@
           </div>
 
           <div class="search-job__filter-item">
+            <label for="location" class="sr-only">Ubicación</label>
             <select class="search-job__filter-select" name="location" id="location">
               <option value="" hidden>Ubicación</option>
               <option value="">Todas las ubicaciones</option>
@@ -103,6 +106,7 @@
           </div>
 
           <div class="search-job__filter-item">
+            <label for="contract" class="sr-only">Tipo de contrato</label>
             <select class="search-job__filter-select" name="contract" id="contract">
               <option value="" hidden>Tipo de contrato</option>
               <option value="">Cualquier tipo de contrato</option>
@@ -119,6 +123,7 @@
           </div>
 
           <div class="search-job__filter-item">
+            <label for="experience" class="sr-only">Nivel de experiencia</label>
             <select class="search-job__filter-select" name="experience" id="experience">
               <option value="" hidden>Nivel de experiencia</option>
               <option value="">Cualquier nivel de experiencia</option>
