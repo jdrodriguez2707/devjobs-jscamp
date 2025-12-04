@@ -58,7 +58,6 @@ function filterJobOffers() {
     });
 
     // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
-    job.classList.toggle("visible", matchesAllFilters);
     job.classList.toggle("hidden", !matchesAllFilters);
   });
 }

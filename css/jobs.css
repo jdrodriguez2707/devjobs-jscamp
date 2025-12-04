@@ -341,10 +341,6 @@
   transition: color 0.3s;
 }
 
-.visible {
-  display: flex;
-}
-
 .hidden {
   display: none;
 }
