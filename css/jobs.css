@@ -208,6 +208,13 @@
   border-bottom: none;
 }
 
+.jobs-loading {
+  margin-block: 1.2rem;
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--secondary-text-color);
+}
+
 .search-results__job-card {
   display: flex;
   justify-content: space-between;

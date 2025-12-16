@@ -1,6 +1,7 @@
 const searchResultsJobContainer = document.querySelector(".search-results__jobs-container");
 const searchFiltersContainer = document.querySelector(".search-job__filters-container");
 const filterSelects = document.querySelectorAll(".search-job__filter-select");
+const jobsLoading = document.querySelector(".jobs-loading");
 
 // Obtener lista de empleos desde el archivo JSON
 fetch("./data.json")
@@ -8,16 +9,22 @@ fetch("./data.json")
     return response.json();
   })
   .then((jobs) => {
-    console.log(jobs);
-    jobs.forEach((job) => {
-      const articleJob = document.createElement("article");
-      articleJob.className = "search-results__job-card";
-      articleJob.dataset.location = job.data.location;
-      articleJob.dataset.technology = job.data.technology;
-      articleJob.dataset.contract = job.data.contract;
-      articleJob.dataset.experience = job.data.experience;
+    setTimeout(() => {
+      if (jobsLoading) jobsLoading.remove();
 
-      articleJob.innerHTML = `<div>
+      if (jobs.length == 0) {
+        searchResultsJobContainer.innerHTML = `<p class="jobs-loading">🙁 No hay empleos disponible por ahora.</p>`;
+      }
+
+      jobs.forEach((job) => {
+        const articleJob = document.createElement("article");
+        articleJob.className = "search-results__job-card";
+        articleJob.dataset.location = job.data.location;
+        articleJob.dataset.technology = job.data.technology;
+        articleJob.dataset.contract = job.data.contract;
+        articleJob.dataset.experience = job.data.experience;
+
+        articleJob.innerHTML = `<div>
             <h3 class="search-results__job-card-title">${job.titulo}</h3>
             <p class="search-results__job-card-company">
               <span>${job.empresa}</span> |
@@ -29,8 +36,15 @@ fetch("./data.json")
           </div>
           <button class="search-results__job-card-apply-btn">Aplicar</button>`;
 
-      searchResultsJobContainer.appendChild(articleJob);
-    });
+        searchResultsJobContainer.appendChild(articleJob);
+      });
+    }, 500);
+  })
+  .catch((error) => {
+    setTimeout(() => {
+      if (jobsLoading) jobsLoading.textContent = "❌ No se pudieron cargar los empleos.";
+      console.error(error);
+    }, 500);
   });
 
 searchResultsJobContainer?.addEventListener("click", (event) => {
