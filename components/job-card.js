@@ -1,4 +1,4 @@
-export const renderJobCard = (job) => {
+export const jobCard = (job) => {
   const articleJob = document.createElement("article");
   articleJob.className = "search-results__job-card";
   articleJob.dataset.location = job.data.location;

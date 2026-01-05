@@ -1,4 +1,12 @@
+import { jobCard } from "../components/job-card.js";
+import { loadJobs } from "../services/fetch-jobs.js";
+jobCard;
 import { searchFiltersContainer, filterSelects, searchResultsJobContainer } from "../utils/dom.js";
+loadJobs;
+const searchJobInput = document.querySelector("#search-job-input");
+const jobs = await loadJobs();
+
+filterJobOffersByInput();
 
 searchFiltersContainer?.addEventListener("change", () => {
   if (!document.querySelector(".search-job__clear-filter-btn")) showClearFilterButton();
@@ -29,6 +37,8 @@ function filterJobOffers() {
     filterValues[filterSelect.id] = filterSelect.value;
   });
 
+  console.log(filterValues);
+
   const jobList = Array.from(searchResultsJobContainer.children);
 
   const filterKeys = Object.keys(filterValues);
@@ -48,5 +58,22 @@ function filterJobOffers() {
 
     // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
     job.classList.toggle("hidden", !matchesAllFilters);
+  });
+}
+
+function filterJobOffersByInput() {
+  searchJobInput.addEventListener("input", () => {
+    const inputValue = searchJobInput.value.toLowerCase();
+    console.log(inputValue);
+
+    const filteredJobs = jobs.filter((job) => {
+      const jobTitle = job.titulo.toLowerCase();
+      return jobTitle.includes(inputValue);
+    });
+
+    console.log(filteredJobs);
+
+    const jobElements = filteredJobs.map((filteredJob) => jobCard(filteredJob));
+    searchResultsJobContainer.replaceChildren(...jobElements);
   });
 }
