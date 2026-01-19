@@ -1,6 +1,7 @@
 export const jobCard = (job) => {
   const articleJob = document.createElement("article");
   articleJob.className = "search-results__job-card";
+  articleJob.dataset.id = job.id;
   articleJob.dataset.location = job.data.location;
   articleJob.dataset.technology = job.data.technology;
   articleJob.dataset.contract = job.data.contract;

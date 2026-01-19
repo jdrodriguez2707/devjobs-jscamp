@@ -37,8 +37,6 @@ function filterJobOffers() {
     filterValues[filterSelect.id] = filterSelect.value;
   });
 
-  console.log(filterValues);
-
   const jobList = Array.from(searchResultsJobContainer.children);
 
   const filterKeys = Object.keys(filterValues);
@@ -64,16 +62,18 @@ function filterJobOffers() {
 function filterJobOffersByInput() {
   searchJobInput.addEventListener("input", () => {
     const inputValue = searchJobInput.value.toLowerCase();
-    console.log(inputValue);
 
-    const filteredJobs = jobs.filter((job) => {
-      const jobTitle = job.titulo.toLowerCase();
-      return jobTitle.includes(inputValue);
-    });
+    const jobList = Array.from(searchResultsJobContainer.children);
 
-    console.log(filteredJobs);
+    jobList.forEach((jobElement) => {
+      const jobId = jobElement.dataset.id;
+      const job = jobs.find((job) => job.id === jobId);
 
-    const jobElements = filteredJobs.map((filteredJob) => jobCard(filteredJob));
-    searchResultsJobContainer.replaceChildren(...jobElements);
+      if (job) {
+        const jobTitle = job.titulo.toLowerCase();
+        const matchesSearch = jobTitle.includes(inputValue);
+        jobElement.classList.toggle("hidden", !matchesSearch);
+      }
+    })
   });
 }
