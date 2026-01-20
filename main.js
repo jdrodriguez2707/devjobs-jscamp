@@ -1,4 +1,4 @@
-import { jobsLoading, searchResultsJobContainer } from "./utils/dom.js";
+import { jobsLoading, jobsCount, jobsTotalCount, filteredJobsCount, searchResultsJobContainer } from "./utils/dom.js";
 import { loadJobs } from "./services/fetch-jobs.js";
 import { jobCard } from "./components/job-card.js";
 import "./modules/apply-job.js";
@@ -17,4 +17,9 @@ setTimeout(() => {
   jobs?.forEach((job) => {
     searchResultsJobContainer.appendChild(jobCard(job));
   });
+
+  // Inicializar y mostrar el conteo de trabajos
+  filteredJobsCount.textContent = jobs.length;
+  jobsTotalCount.textContent = jobs.length;
+  jobsCount.classList.remove("hidden");
 }, 500);

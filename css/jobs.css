@@ -59,7 +59,9 @@
   font-weight: 500;
   background-color: var(--primary-btn-color);
   color: var(--tertiary-color);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 
   &:hover {
     background-color: var(--tertiary-color);
@@ -213,6 +215,18 @@
   text-align: center;
   font-size: 1.8rem;
   color: var(--secondary-text-color);
+}
+
+.search-results__jobs-count {
+  padding-block: 1.2rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--primary-text-color);
+}
+
+.search-results__jobs-count-number {
+  font-weight: bold;
+  color: var(--tertiary-color);
 }
 
 .search-results__job-card {
