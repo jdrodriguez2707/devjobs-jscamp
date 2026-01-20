@@ -182,6 +182,9 @@
 }
 
 .search-job__filter-menu {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--secondary-text-color);
   position: absolute;
   top: 100%;
   left: 0;

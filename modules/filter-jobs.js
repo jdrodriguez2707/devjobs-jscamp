@@ -4,6 +4,8 @@ jobCard;
 import {
   searchFiltersContainer,
   filterSelects,
+  filterSelectTech,
+  filterMenuTech,
   searchResultsJobContainer,
   searchJobInput,
   filteredJobsCount
@@ -13,6 +15,10 @@ const jobs = await loadJobs();
 const filteredJobs = []; // Array para llevar conteo de trabajos filtrados
 
 filterJobOffersByInput();
+
+filterSelectTech?.addEventListener("click", () => {
+  filterMenuTech.classList.toggle("hidden");
+});
 
 searchFiltersContainer?.addEventListener("change", () => {
   if (!document.querySelector(".search-job__clear-filter-btn")) showClearFilterButton();
