@@ -181,6 +181,66 @@
   pointer-events: none;
 }
 
+.search-job__filter-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 20rem;
+  background-color: var(--secondary-btn-color);
+  border: 1px solid #767676;
+  border-radius: 0px;
+  z-index: 10;
+  cursor: default;
+}
+
+.search-job__filter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.search-job__filter-group-title {
+  margin-bottom: 0.8rem;
+}
+
+.search-job__filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-bottom: 0.6rem;
+
+  input[type="checkbox"] {
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--secondary-text-color);
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+
+    &:checked {
+      background-color: var(--tertiary-color);
+      border-color: var(--tertiary-color);
+    }
+
+    &:checked::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 4px;
+      width: 4px;
+      height: 8px;
+      border: solid var(--primary-text-color);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
+
 .search-job__clear-filter-btn {
   padding: 0.8rem 2rem;
   border: none;

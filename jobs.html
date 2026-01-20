@@ -56,38 +56,47 @@
             <path d="M21 21l-6 -6" />
           </svg>
           <label for="search-job-input" class="sr-only">Buscar ofertas de empleo</label>
-          <input class="search-job__search-input" id="search-job-input" type="search" placeholder="Buscar trabajos, empresas o habilidades"
-            name="search-job" id="search-job" required>
+          <input class="search-job__search-input" id="search-job-input" type="search"
+            placeholder="Buscar trabajos, empresas o habilidades" name="search-job" id="search-job" required>
         </div>
 
         <div class="search-job__filters-container">
           <div class="search-job__filter-item">
-            <label for="technology" class="sr-only">Tecnología</label>
-            <select class="search-job__filter-select" name="technology" id="technology">
-              <option value="" hidden>Tecnología</option>
-              <option value="">Todas las tecnologías</option>
-              <optgroup label="Frontend">
-                <option value="javascript">JavaScript</option>
-                <option value="react">React</option>
-                <option value="figma">Figma</option>
-              </optgroup>
-              <optgroup label="Backend">
-                <option value="python">Python</option>
-                <option value="node">NodeJS</option>
-                <option value="mysql">MySQL</option>
-              </optgroup>
-              <optgroup label="Metodologías ágiles">
-                <option value="scrum">Scrum</option>
-                <option value="jira">Jira</option>
-              </optgroup>
-              <hr>
-              <option value="aws">AWS</option>
-              <option value="kotlin">Kotlin</option>
-              <option value="siem">SIEM</option>
-              <option value="selenium">Selenium</option>
-              <option value="linux">Linux</option>
-              <option value="cisco">Cisco</option>
-            </select>
+            <div class="search-job__filter-select">
+              <span>Tecnología</span>
+              <div class="search-job__filter-menu">
+                <div class="search-job__filter-group">
+                  <p class="search-job__filter-group-title">Frontend</p>
+                  <label class="search-job__filter-label"><input type="checkbox"> JavaScript</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> React</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> Figma</label>
+                </div>
+                <hr>
+                <div class="search-job__filter-group">
+                  <p class="search-job__filter-group-title">Backend</p>
+                  <label class="search-job__filter-label"><input type="checkbox"> Python</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> NodeJS</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> MySQL</label>
+                </div>
+                <hr>
+                <div class="search-job__filter-group">
+                  <p class="search-job__filter-group-title">Metodologías ágiles</p>
+                  <label class="search-job__filter-label"><input type="checkbox"> Scrum</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> Jira</label>
+                </div>
+                <hr>
+                <div class="search-job__filter-group">
+                  <p class="search-job__filter-group-title">Otras tecnologías</p>
+                  <label class="search-job__filter-label"><input type="checkbox"> AWS</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> Kotlin</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> SIEM</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> Selenium</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> Linux</label>
+                  <label class="search-job__filter-label"><input type="checkbox"> Cisco</label>
+                </div>
+              </div>
+            </div>
+            
             <!-- Icono de flecha hacia abajo -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -160,8 +169,9 @@
         <p class="jobs-loading">Cargando lista de empleos...</p>
       </div>
 
-      <p class="search-results__jobs-count hidden">Mostrando <span
-        id="search-results-filtered-jobs" class="search-results__jobs-count-number"></span> de <span id="search-results-jobs-total" class="search-results__jobs-count-number"></span> ofertas de empleo</p>
+      <p class="search-results__jobs-count hidden">Mostrando <span id="search-results-filtered-jobs"
+          class="search-results__jobs-count-number"></span> de <span id="search-results-jobs-total"
+          class="search-results__jobs-count-number"></span> ofertas de empleo</p>
 
       <nav class="search-results__pagination" aria-label="Paginación de resultados de búsqueda">
         <ul class="search-results__pagination-list">
