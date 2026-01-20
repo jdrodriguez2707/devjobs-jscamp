@@ -1,7 +1,13 @@
 import { jobCard } from "../components/job-card.js";
 import { loadJobs } from "../services/fetch-jobs.js";
 jobCard;
-import { searchFiltersContainer, filterSelects, searchResultsJobContainer, searchJobInput, filteredJobsCount } from "../utils/dom.js";
+import {
+  searchFiltersContainer,
+  filterSelects,
+  searchResultsJobContainer,
+  searchJobInput,
+  filteredJobsCount
+} from "../utils/dom.js";
 loadJobs;
 const jobs = await loadJobs();
 const filteredJobs = []; // Array para llevar conteo de trabajos filtrados
@@ -54,9 +60,18 @@ function filterJobOffers() {
       }
     });
 
+    // Contar trabajo filtrado para el contador
+    if (matchesAllFilters) filteredJobs.push(job);
+
     // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
     job.classList.toggle("hidden", !matchesAllFilters);
   });
+
+  // Actualizar el contador de trabajos filtrados
+  filteredJobsCount.textContent = filteredJobs.length;
+
+  // Limpiar el array para la próxima búsqueda
+  filteredJobs.length = 0;
 }
 
 function filterJobOffersByInput() {
@@ -74,11 +89,11 @@ function filterJobOffersByInput() {
         const matchesSearch = jobTitle.includes(inputValue);
 
         // Contar trabajo filtrado para el contador
-        if (matchesSearch) filteredJobs.push(job); 
+        if (matchesSearch) filteredJobs.push(job);
 
         jobElement.classList.toggle("hidden", !matchesSearch);
       }
-    })
+    });
 
     // Actualizar el contador de trabajos filtrados
     filteredJobsCount.textContent = filteredJobs.length;
