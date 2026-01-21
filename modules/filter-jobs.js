@@ -12,7 +12,7 @@ import {
 } from "../utils/dom.js";
 loadJobs;
 const jobs = await loadJobs();
-const filteredJobs = []; // Array para llevar conteo de trabajos filtrados
+let filteredJobsNumber = 0; // Variable para llevar conteo de trabajos filtrados
 
 filterJobOffersByInput();
 
@@ -66,18 +66,18 @@ function filterJobOffers() {
       }
     });
 
-    // Contar trabajo filtrado para el contador
-    if (matchesAllFilters) filteredJobs.push(job);
+    // Sumar trabajo filtrado al contador
+    if (matchesAllFilters) filteredJobsNumber++;
 
     // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
     job.classList.toggle("hidden", !matchesAllFilters);
   });
 
   // Actualizar el contador de trabajos filtrados
-  filteredJobsCount.textContent = filteredJobs.length;
+  filteredJobsCount.textContent = filteredJobsNumber;
 
-  // Limpiar el array para la próxima búsqueda
-  filteredJobs.length = 0;
+  // Reiniciar contador para la próxima búsqueda
+  filteredJobsNumber = 0;
 }
 
 function filterJobOffersByInput() {
@@ -94,17 +94,17 @@ function filterJobOffersByInput() {
         const jobTitle = job.titulo.toLowerCase();
         const matchesSearch = jobTitle.includes(inputValue);
 
-        // Contar trabajo filtrado para el contador
-        if (matchesSearch) filteredJobs.push(job);
+        // Sumar trabajo filtrado al contador
+        if (matchesSearch) filteredJobsNumber++;
 
         jobElement.classList.toggle("hidden", !matchesSearch);
       }
     });
 
     // Actualizar el contador de trabajos filtrados
-    filteredJobsCount.textContent = filteredJobs.length;
+    filteredJobsCount.textContent = filteredJobsNumber;
 
-    // Limpiar el array para la próxima búsqueda
-    filteredJobs.length = 0;
+    // Reiniciar contador para la próxima búsqueda
+    filteredJobsNumber = 0;
   });
 }
