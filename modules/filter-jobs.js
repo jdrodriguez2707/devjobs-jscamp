@@ -13,6 +13,7 @@ import {
 
 const jobs = await loadJobs();
 let filteredJobsNumber = 0; // Variable para llevar conteo de trabajos filtrados
+const filteredTechnologies = new Set();
 
 filterJobOffersByInput();
 
@@ -55,8 +56,18 @@ function filterJobOffers() {
     // Obtener valores de filtros seleccionados (comprobar si es checkbox o select)
     if (filterSelect.type !== "checkbox") {
       filterValues[filterSelect.id] = filterSelect.value;
-    } else if (filterSelect.checked) {
-      filterValues[filterSelect.name] = filterSelect.parentNode.innerText.toLowerCase().trim(); // Obtener label (valor) asociado al checkbox
+      return;
+    }
+
+    // Obtener label (valor) asociado al checkbox
+    let checkBoxValue = filterSelect.parentNode.innerText.toLowerCase().trim().split(" ").join("-");
+
+    if (filterSelect.checked) {
+      filteredTechnologies.add(checkBoxValue);
+      filterValues[filterSelect.name] = [...filteredTechnologies];
+    } else if (!filterSelect.checked && filteredTechnologies.has(checkBoxValue)) {
+      filteredTechnologies.delete(checkBoxValue);
+      filterValues[filterSelect.name] = [...filteredTechnologies];
     }
   });
 
@@ -66,14 +77,26 @@ function filterJobOffers() {
 
   const filterKeys = Object.keys(filterValues);
 
-  jobList.forEach((job) => {
+  jobList.forEach((jobElement) => {
     // Comprobar que la oferta de trabajo cumpla con todos los filtros
     const matchesAllFilters = filterKeys.every((filterKey) => {
-      if (job.dataset[filterKey]) {
-        const jobDatasetValue = job.dataset[filterKey];
+      const jobDatasetValue = jobElement.dataset[filterKey];
+
+      if (jobDatasetValue) {
+        // Comprobar si el filtro corresponde a los checkboxes de tecnología
+        if (jobDatasetValue.includes(",")) {
+          const jobTechArray = jobDatasetValue.split(",");
+          const filteredTechArray = filterValues[filterKey];
+
+          // Comprobar si por lo menos uno de los valores seleccionados en los filtros de tecnología está incluido en las tecnologías de la oferta de trabajo
+          const hasMatchingTechnologies = filteredTechArray.some((tech) => jobTechArray.includes(tech));
+
+          return hasMatchingTechnologies;
+        }
+
         return filterValues[filterKey] === jobDatasetValue || filterValues[filterKey] === "";
       } else {
-        // console.warn(`Job sin data-${filterKey}:`, job);
+        console.warn(`Job sin data-${filterKey}:`, jobElement);
         // Si el job no tiene este atributo, retonar false para que no cumpla con los filtros y se oculte en el DOM
         return false;
       }
@@ -83,12 +106,12 @@ function filterJobOffers() {
     if (matchesAllFilters) filteredJobsNumber++;
 
     // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
-    job.classList.toggle("hidden", !matchesAllFilters);
+    jobElement.classList.toggle("hidden", !matchesAllFilters);
 
     // Ocultar el menú de filtros de tecnología después de aplicar los filtros
-    setTimeout(() => {
-      filterMenuTech.classList.add("hidden");
-    }, 500);
+    // setTimeout(() => {
+    //   filterMenuTech.classList.add("hidden");
+    // }, 500);
   });
 
   // Actualizar el contador de trabajos filtrados
