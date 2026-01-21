@@ -38,6 +38,10 @@ function showClearFilterButton() {
 function clearFilters(filterButton) {
   filterButton.remove();
   filterSelects.forEach((filterSelect) => {
+    if (filterSelect.type === "checkbox") {
+      filterSelect.checked = false;
+      return;
+    }
     filterSelect.value = "";
   });
   filterJobOffers();
@@ -52,7 +56,7 @@ function filterJobOffers() {
     if (filterSelect.type !== "checkbox") {
       filterValues[filterSelect.id] = filterSelect.value;
     } else if (filterSelect.checked) {
-      filterValues[filterSelect.name] = filterSelect.parentNode.innerText.toLowerCase(); // Obtener label (valor) asociado al checkbox
+      filterValues[filterSelect.name] = filterSelect.parentNode.innerText.toLowerCase().trim(); // Obtener label (valor) asociado al checkbox
     }
   });
 
