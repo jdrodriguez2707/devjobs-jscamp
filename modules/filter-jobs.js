@@ -10,7 +10,7 @@ import {
   searchJobInput,
   filteredJobsCount
 } from "../utils/dom.js";
-loadJobs;
+
 const jobs = await loadJobs();
 let filteredJobsNumber = 0; // Variable para llevar conteo de trabajos filtrados
 
@@ -46,8 +46,17 @@ function clearFilters(filterButton) {
 function filterJobOffers() {
   const filterValues = {};
   filterSelects.forEach((filterSelect) => {
-    filterValues[filterSelect.id] = filterSelect.value;
+    console.log({ filterSelect });
+
+    // Obtener valores de filtros seleccionados (comprobar si es checkbox o select)
+    if (filterSelect.type !== "checkbox") {
+      filterValues[filterSelect.id] = filterSelect.value;
+    } else if (filterSelect.checked) {
+      filterValues[filterSelect.name] = filterSelect.parentNode.innerText.toLowerCase(); // Obtener label (valor) asociado al checkbox
+    }
   });
+
+  console.log(filterValues);
 
   const jobList = Array.from(searchResultsJobContainer.children);
 
@@ -71,6 +80,11 @@ function filterJobOffers() {
 
     // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
     job.classList.toggle("hidden", !matchesAllFilters);
+
+    // Ocultar el menú de filtros de tecnología después de aplicar los filtros
+    setTimeout(() => {
+      filterMenuTech.classList.add("hidden");
+    }, 500);
   });
 
   // Actualizar el contador de trabajos filtrados
