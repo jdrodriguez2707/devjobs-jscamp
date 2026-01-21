@@ -89,9 +89,11 @@ function filterJobOffers() {
           const filteredTechArray = filterValues[filterKey];
 
           // Comprobar si por lo menos uno de los valores seleccionados en los filtros de tecnología está incluido en las tecnologías de la oferta de trabajo
-          const hasMatchingTechnologies = filteredTechArray.some((tech) => jobTechArray.includes(tech));
+          const hasMatchingTechnologies = filteredTechArray.some((tech) =>
+            jobTechArray.includes(tech)
+          );
 
-          return hasMatchingTechnologies;
+          return hasMatchingTechnologies || filterValues[filterKey].length === 0;
         }
 
         return filterValues[filterKey] === jobDatasetValue || filterValues[filterKey] === "";
