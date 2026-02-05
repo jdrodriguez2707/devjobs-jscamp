@@ -1,6 +1,4 @@
-import { jobCard } from "../components/job-card.js";
 import { loadJobs } from "../services/fetch-jobs.js";
-jobCard;
 import {
   searchFiltersContainer,
   filterSelects,
@@ -9,6 +7,7 @@ import {
   searchResultsJobContainer,
   searchJobInput,
   filteredJobsCount,
+  jobsTotalCount,
   RESULTS_PER_PAGE
 } from "../utils/dom.js";
 import { pagination } from "../components/pagination.js";
@@ -16,6 +15,14 @@ import { pagination } from "../components/pagination.js";
 const jobs = await loadJobs();
 const filteredTechnologies = new Set();
 let currentPage = 1;
+
+// Array para guardar el estado actual de los trabajos visibles. Se usa en la paginación para saber qué trabajos mostrar en cada página
+let currentVisibleJobs = [];
+
+// Inicializar currentVisibleJobs con todos los trabajos al cargar la página
+export function initializePagination() {
+  currentVisibleJobs = Array.from(searchResultsJobContainer.children);
+}
 
 filterJobOffersByInput();
 
@@ -35,6 +42,7 @@ document.addEventListener("click", (event) => {
 
 searchFiltersContainer?.addEventListener("change", (event) => {
   if (!document.querySelector(".search-job__clear-filter-btn")) showClearFilterButton();
+  currentPage = 1; // Resetear a página 1 cuando se aplican filtros
   filterJobOffers();
 
   // Cerrar el menú de tecnologías cuando se marca un checkbox
@@ -89,6 +97,7 @@ function filterJobOffers() {
 
   const jobList = Array.from(searchResultsJobContainer.children);
   const filterKeys = Object.keys(filterValues);
+  // Guardar trabajos visibles después de aplicar filtros para paginación
   const visibleJobs = [];
 
   jobList.forEach((jobElement) => {
@@ -118,7 +127,6 @@ function filterJobOffers() {
       }
     });
 
-    // Sumar trabajo filtrado al contador
     if (matchesAllFilters) {
       visibleJobs.push(jobElement);
     }
@@ -127,6 +135,7 @@ function filterJobOffers() {
     jobElement.classList.add("hidden");
   });
 
+  currentVisibleJobs = visibleJobs;
   paginateJobs(visibleJobs);
 }
 
@@ -144,7 +153,6 @@ function filterJobOffersByInput() {
         const jobTitle = job.titulo.toLowerCase();
         const matchesSearch = jobTitle.includes(inputValue);
 
-        // Sumar trabajo filtrado al contador
         if (matchesSearch) {
           visibleJobs.push(jobElement);
         }
@@ -153,6 +161,8 @@ function filterJobOffersByInput() {
       }
     });
 
+    currentPage = 1; // Resetear a página 1 cuando se busca
+    currentVisibleJobs = visibleJobs;
     paginateJobs(visibleJobs);
   });
 }
@@ -163,6 +173,12 @@ function paginateJobs(visibleJobs) {
   const startIndex = (currentPage - 1) * RESULTS_PER_PAGE;
   const endIndex = startIndex + RESULTS_PER_PAGE;
 
+  // Primero ocultar todos los trabajos visibles para evitar que se acumulen
+  visibleJobs.forEach((job) => {
+    job.classList.add("hidden");
+  });
+
+  // Luego mostrar solo los trabajos correspondientes a la página actual
   let visibleCount = 0;
   visibleJobs.forEach((job, index) => {
     if (index >= startIndex && index < endIndex) {
@@ -173,6 +189,13 @@ function paginateJobs(visibleJobs) {
 
   // Actualizar el contador con los trabajos visibles en la página actual
   filteredJobsCount.textContent = visibleCount;
+  // Actualizar el total del contador con el número total de trabajos filtrados
+  jobsTotalCount.textContent = visibleJobs.length;
 
-  pagination(totalPages, currentPage);
+  pagination(totalPages, currentPage, handlePageChange);
+}
+
+export function handlePageChange(newPage) {
+  currentPage = newPage;
+  paginateJobs(currentVisibleJobs);
 }

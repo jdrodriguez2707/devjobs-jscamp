@@ -10,7 +10,7 @@ import { loadJobs } from "./services/fetch-jobs.js";
 import { jobCard } from "./components/job-card.js";
 import { pagination } from "./components/pagination.js";
 import "./modules/apply-job.js";
-import "./modules/filter-jobs.js";
+import { handlePageChange, initializePagination } from "./modules/filter-jobs.js";
 import "./components/devjobs-avatar-element.js";
 
 const jobs = await loadJobs();
@@ -28,7 +28,6 @@ setTimeout(() => {
 
   const totalPages = Math.ceil(jobs.length / RESULTS_PER_PAGE);
 
-
   let visibleCount = 0;
   Array.from(searchResultsJobContainer.children).forEach((job, index) => {
     if (index >= RESULTS_PER_PAGE) {
@@ -38,7 +37,10 @@ setTimeout(() => {
     }
   });
 
-  pagination(totalPages);
+  // Inicializar el array de trabajos visibles para la paginación
+  initializePagination();
+
+  pagination(totalPages, 1, handlePageChange);
 
   // Inicializar y mostrar el conteo de trabajos
   filteredJobsCount.textContent = visibleCount;
