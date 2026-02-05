@@ -141,6 +141,14 @@ function filterJobOffers() {
 
 function filterJobOffersByInput() {
   searchJobInput.addEventListener("input", () => {
+    // Limpiar checkboxes de tecnología al buscar por input
+    filteredTechnologies.clear();
+    filterSelects.forEach((filterSelect) => {
+      if (filterSelect.type === "checkbox") {
+        filterSelect.checked = false;
+      }
+    });
+
     const inputValue = searchJobInput.value.toLowerCase();
     const jobList = Array.from(searchResultsJobContainer.children);
     const visibleJobs = [];

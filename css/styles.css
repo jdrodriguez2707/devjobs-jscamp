@@ -17,11 +17,6 @@
   font-size: 2rem;
 }
 
-.main-header__logo {
-  color: var(--tertiary-color);
-  width: 32px;
-}
-
 .main-header__nav-list {
   display: flex;
   gap: 3rem;
