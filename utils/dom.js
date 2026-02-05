@@ -8,3 +8,4 @@ export const jobsLoading = document.querySelector(".jobs-loading")
 export const jobsCount = document.querySelector(".search-results__jobs-count");
 export const jobsTotalCount = document.getElementById("search-results-jobs-total");
 export const filteredJobsCount = document.getElementById("search-results-filtered-jobs");
+export const paginationList = document.querySelector(".search-results__pagination-list");

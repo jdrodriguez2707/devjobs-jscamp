@@ -8,12 +8,15 @@ import {
   filterMenuTech,
   searchResultsJobContainer,
   searchJobInput,
-  filteredJobsCount
+  filteredJobsCount,
+  paginationList
 } from "../utils/dom.js";
 
 const jobs = await loadJobs();
 let filteredJobsNumber = 0; // Variable para llevar conteo de trabajos filtrados
 const filteredTechnologies = new Set();
+const RESULTS_PER_PAGE = 3;
+let currentPage = 1;
 
 filterJobOffersByInput();
 
@@ -60,14 +63,13 @@ function clearFilters(filterButton) {
     }
     filterSelect.value = "";
   });
+  currentPage = 1;
   filterJobOffers();
 }
 
 function filterJobOffers() {
   const filterValues = {};
   filterSelects.forEach((filterSelect) => {
-    console.log({ filterSelect });
-
     // Obtener valores de filtros seleccionados (comprobar si es checkbox o select)
     if (filterSelect.type !== "checkbox") {
       filterValues[filterSelect.id] = filterSelect.value;
@@ -86,11 +88,9 @@ function filterJobOffers() {
     }
   });
 
-  console.log(filterValues);
-
   const jobList = Array.from(searchResultsJobContainer.children);
-
   const filterKeys = Object.keys(filterValues);
+  const visibleJobs = [];
 
   jobList.forEach((jobElement) => {
     // Comprobar que la oferta de trabajo cumpla con todos los filtros
@@ -120,16 +120,22 @@ function filterJobOffers() {
     });
 
     // Sumar trabajo filtrado al contador
-    if (matchesAllFilters) filteredJobsNumber++;
+    if (matchesAllFilters) {
+      filteredJobsNumber++;
+      visibleJobs.push(jobElement);
+    }
 
     // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
-    jobElement.classList.toggle("hidden", !matchesAllFilters);
+    // jobElement.classList.toggle("hidden", !matchesAllFilters);
+    jobElement.classList.add("hidden");
 
     // Ocultar el menú de filtros de tecnología después de aplicar los filtros
     // setTimeout(() => {
     //   filterMenuTech.classList.add("hidden");
     // }, 500);
   });
+
+  paginateJobs(visibleJobs);
 
   // Actualizar el contador de trabajos filtrados
   filteredJobsCount.textContent = filteredJobsNumber;
@@ -141,8 +147,8 @@ function filterJobOffers() {
 function filterJobOffersByInput() {
   searchJobInput.addEventListener("input", () => {
     const inputValue = searchJobInput.value.toLowerCase();
-
     const jobList = Array.from(searchResultsJobContainer.children);
+    const visibleJobs = [];
 
     jobList.forEach((jobElement) => {
       const jobId = jobElement.dataset.id;
@@ -153,11 +159,16 @@ function filterJobOffersByInput() {
         const matchesSearch = jobTitle.includes(inputValue);
 
         // Sumar trabajo filtrado al contador
-        if (matchesSearch) filteredJobsNumber++;
+        if (matchesSearch) {
+          filteredJobsNumber++;
+          visibleJobs.push(jobElement);
+        }
 
-        jobElement.classList.toggle("hidden", !matchesSearch);
+        jobElement.classList.add("hidden");
       }
     });
+
+    paginateJobs(visibleJobs);
 
     // Actualizar el contador de trabajos filtrados
     filteredJobsCount.textContent = filteredJobsNumber;
@@ -165,4 +176,64 @@ function filterJobOffersByInput() {
     // Reiniciar contador para la próxima búsqueda
     filteredJobsNumber = 0;
   });
+}
+
+function paginateJobs(visibleJobs) {
+  const totalPages = Math.ceil(visibleJobs.length / RESULTS_PER_PAGE);
+
+  const startIndex = (currentPage - 1) * RESULTS_PER_PAGE;
+  const endIndex = startIndex + RESULTS_PER_PAGE;
+
+  visibleJobs.forEach((job, index) => {
+    if (index >= startIndex && index < endIndex) {
+      job.classList.remove("hidden");
+    }
+  });
+
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+  paginationList.innerHTML = "";
+
+  const prevArrow = document.createElement("li");
+  prevArrow.innerHTML = `
+    <a class="search-results__pagination-arrow" href="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="search-results__pagination-icon">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M15 6l-6 6l6 6" />
+      </svg>
+    </a>
+  `;
+  paginationList.appendChild(prevArrow);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageItem = document.createElement("li");
+    const pageLink = document.createElement("a");
+    pageLink.className = "search-results__pagination-link";
+    pageLink.href = "";
+    pageLink.textContent = i;
+
+    if (i === currentPage) {
+      pageLink.classList.add("is-active");
+    }
+
+    pageItem.appendChild(pageLink);
+    paginationList.appendChild(pageItem);
+  }
+
+  const nextArrow = document.createElement("li");
+  nextArrow.innerHTML = `
+    <a class="search-results__pagination-arrow" href="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="search-results__pagination-icon">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 6l6 6l-6 6" />
+      </svg>
+    </a>
+  `;
+  paginationList.appendChild(nextArrow);
 }
