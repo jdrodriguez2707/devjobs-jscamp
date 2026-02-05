@@ -17,13 +17,28 @@ const filteredTechnologies = new Set();
 
 filterJobOffersByInput();
 
+// Abrir y cerrar menú de filtros de tecnología
 filterSelectTech?.addEventListener("click", () => {
   filterMenuTech.classList.toggle("hidden");
 });
 
-searchFiltersContainer?.addEventListener("change", () => {
+document.addEventListener("click", (event) => {
+  const isClickInsideMenu =
+    filterSelectTech?.contains(event.target) || filterMenuTech?.contains(event.target);
+
+  if (!isClickInsideMenu && !filterMenuTech?.classList.contains("hidden")) {
+    filterMenuTech.classList.add("hidden");
+  }
+});
+
+searchFiltersContainer?.addEventListener("change", (event) => {
   if (!document.querySelector(".search-job__clear-filter-btn")) showClearFilterButton();
   filterJobOffers();
+
+  // Cerrar el menú de tecnologías cuando se marca un checkbox
+  if (event.target.type === "checkbox" && event.target.name === "technology") {
+    filterMenuTech.classList.add("hidden");
+  }
 });
 
 function showClearFilterButton() {
