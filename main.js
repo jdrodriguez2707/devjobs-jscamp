@@ -28,16 +28,20 @@ setTimeout(() => {
 
   const totalPages = Math.ceil(jobs.length / RESULTS_PER_PAGE);
 
+
+  let visibleCount = 0;
   Array.from(searchResultsJobContainer.children).forEach((job, index) => {
     if (index >= RESULTS_PER_PAGE) {
       job.classList.add("hidden");
+    } else {
+      visibleCount++;
     }
   });
 
   pagination(totalPages);
 
   // Inicializar y mostrar el conteo de trabajos
-  filteredJobsCount.textContent = jobs.length;
+  filteredJobsCount.textContent = visibleCount;
   jobsTotalCount.textContent = jobs.length;
   jobsCount.classList.remove("hidden");
 }, 500);

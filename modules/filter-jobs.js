@@ -14,7 +14,6 @@ import {
 import { pagination } from "../components/pagination.js";
 
 const jobs = await loadJobs();
-let filteredJobsNumber = 0; // Variable para llevar conteo de trabajos filtrados
 const filteredTechnologies = new Set();
 let currentPage = 1;
 
@@ -121,27 +120,14 @@ function filterJobOffers() {
 
     // Sumar trabajo filtrado al contador
     if (matchesAllFilters) {
-      filteredJobsNumber++;
       visibleJobs.push(jobElement);
     }
 
-    // Ocultar o mostrar la oferta de trabajo si coinciden o no todos los filtros
-    // jobElement.classList.toggle("hidden", !matchesAllFilters);
+    // Ocultar la oferta de trabajo si no coincide con todos los filtros
     jobElement.classList.add("hidden");
-
-    // Ocultar el menú de filtros de tecnología después de aplicar los filtros
-    // setTimeout(() => {
-    //   filterMenuTech.classList.add("hidden");
-    // }, 500);
   });
 
   paginateJobs(visibleJobs);
-
-  // Actualizar el contador de trabajos filtrados
-  filteredJobsCount.textContent = filteredJobsNumber;
-
-  // Reiniciar contador para la próxima búsqueda
-  filteredJobsNumber = 0;
 }
 
 function filterJobOffersByInput() {
@@ -160,7 +146,6 @@ function filterJobOffersByInput() {
 
         // Sumar trabajo filtrado al contador
         if (matchesSearch) {
-          filteredJobsNumber++;
           visibleJobs.push(jobElement);
         }
 
@@ -169,12 +154,6 @@ function filterJobOffersByInput() {
     });
 
     paginateJobs(visibleJobs);
-
-    // Actualizar el contador de trabajos filtrados
-    filteredJobsCount.textContent = filteredJobsNumber;
-
-    // Reiniciar contador para la próxima búsqueda
-    filteredJobsNumber = 0;
   });
 }
 
@@ -184,11 +163,16 @@ function paginateJobs(visibleJobs) {
   const startIndex = (currentPage - 1) * RESULTS_PER_PAGE;
   const endIndex = startIndex + RESULTS_PER_PAGE;
 
+  let visibleCount = 0;
   visibleJobs.forEach((job, index) => {
     if (index >= startIndex && index < endIndex) {
       job.classList.remove("hidden");
+      visibleCount++;
     }
   });
+
+  // Actualizar el contador con los trabajos visibles en la página actual
+  filteredJobsCount.textContent = visibleCount;
 
   pagination(totalPages, currentPage);
 }
