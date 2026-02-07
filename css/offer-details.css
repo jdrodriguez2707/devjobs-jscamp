@@ -104,7 +104,9 @@
   font-weight: 500;
   background-color: var(--primary-btn-color);
   color: var(--tertiary-color);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 
   &:hover {
     background-color: var(--tertiary-color);

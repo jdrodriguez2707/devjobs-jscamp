@@ -1,18 +1,18 @@
 class DevJobsAvatar extends HTMLElement {
   constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
+    super()
+    this.attachShadow({ mode: 'open' })
   }
 
   createUrl(service, username) {
-    return `https://unavatar.io/${service}/${username}`;
+    return `https://unavatar.io/${service}/${username}`
   }
 
   render() {
-    const service = this.getAttribute("service") ?? "github";
-    const username = this.getAttribute("username") ?? "jdrodriguez2707";
-    const size = this.getAttribute("size") ?? "4.8";
-    const url = this.createUrl(service, username);
+    const service = this.getAttribute('service') ?? 'github'
+    const username = this.getAttribute('username') ?? 'jdrodriguez2707'
+    const size = this.getAttribute('size') ?? '4.8'
+    const url = this.createUrl(service, username)
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -26,12 +26,12 @@ class DevJobsAvatar extends HTMLElement {
         src="${url}"
         alt="Avatar de ${username}"
       >
-    `;
+    `
   }
 
   connectedCallback() {
-    this.render();
+    this.render()
   }
 }
 
-customElements.define("devjobs-avatar", DevJobsAvatar);
+customElements.define('devjobs-avatar', DevJobsAvatar)

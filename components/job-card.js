@@ -1,11 +1,11 @@
-export const jobCard = (job) => {
-  const articleJob = document.createElement("article");
-  articleJob.className = "search-results__job-card";
-  articleJob.dataset.id = job.id;
-  articleJob.dataset.location = job.data.location;
-  articleJob.dataset.technology = job.data.technology;
-  articleJob.dataset.contract = job.data.contract;
-  articleJob.dataset.experience = job.data.experience;
+export const jobCard = job => {
+  const articleJob = document.createElement('article')
+  articleJob.className = 'search-results__job-card'
+  articleJob.dataset.id = job.id
+  articleJob.dataset.location = job.data.location
+  articleJob.dataset.technology = job.data.technology
+  articleJob.dataset.contract = job.data.contract
+  articleJob.dataset.experience = job.data.experience
 
   articleJob.innerHTML = `<div>
               <h3 class="search-results__job-card-title">${job.titulo}</h3>
@@ -17,7 +17,7 @@ export const jobCard = (job) => {
                 ${job.descripcion}
               </p>
             </div>
-            <button class="search-results__job-card-apply-btn">Aplicar</button>`;
+            <button class="search-results__job-card-apply-btn">Aplicar</button>`
 
-  return articleJob;
-};
+  return articleJob
+}

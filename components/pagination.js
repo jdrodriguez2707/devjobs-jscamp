@@ -1,12 +1,12 @@
-import { paginationList } from "../utils/dom.js";
+import { paginationList } from '../utils/dom.js'
 
 export function pagination(totalPages, currentPage = 1, onPageChange) {
   // Limpiar la paginación existente para evitar duplicados
-  paginationList.innerHTML = "";
+  paginationList.innerHTML = ''
 
   // Flecha anterior (solo si no estamos en la página 1)
   if (currentPage > 1) {
-    const prevArrow = document.createElement("li");
+    const prevArrow = document.createElement('li')
     prevArrow.innerHTML = `
       <a class="search-results__pagination-arrow" href="">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -16,41 +16,41 @@ export function pagination(totalPages, currentPage = 1, onPageChange) {
           <path d="M15 6l-6 6l6 6" />
         </svg>
       </a>
-    `;
+    `
 
-    const prevLink = prevArrow.querySelector("a");
-    prevLink.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (onPageChange) onPageChange(currentPage - 1);
-    });
+    const prevLink = prevArrow.querySelector('a')
+    prevLink.addEventListener('click', event => {
+      event.preventDefault()
+      if (onPageChange) onPageChange(currentPage - 1)
+    })
 
-    paginationList.appendChild(prevArrow);
+    paginationList.appendChild(prevArrow)
   }
 
   // Números de página
   for (let i = 1; i <= totalPages; i++) {
-    const pageItem = document.createElement("li");
-    const pageLink = document.createElement("a");
-    pageLink.className = "search-results__pagination-link";
-    pageLink.href = "";
-    pageLink.textContent = i;
+    const pageItem = document.createElement('li')
+    const pageLink = document.createElement('a')
+    pageLink.className = 'search-results__pagination-link'
+    pageLink.href = ''
+    pageLink.textContent = i
 
     if (i === currentPage) {
-      pageLink.classList.add("is-active");
+      pageLink.classList.add('is-active')
     }
 
-    pageLink.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (onPageChange && i !== currentPage) onPageChange(i);
-    });
+    pageLink.addEventListener('click', event => {
+      event.preventDefault()
+      if (onPageChange && i !== currentPage) onPageChange(i)
+    })
 
-    pageItem.appendChild(pageLink);
-    paginationList.appendChild(pageItem);
+    pageItem.appendChild(pageLink)
+    paginationList.appendChild(pageItem)
   }
 
   // Flecha siguiente (solo si no estamos en la última página)
   if (currentPage < totalPages) {
-    const nextArrow = document.createElement("li");
+    const nextArrow = document.createElement('li')
     nextArrow.innerHTML = `
       <a class="search-results__pagination-arrow" href="">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -60,14 +60,14 @@ export function pagination(totalPages, currentPage = 1, onPageChange) {
           <path d="M9 6l6 6l-6 6" />
         </svg>
       </a>
-    `;
+    `
 
-    const nextLink = nextArrow.querySelector("a");
-    nextLink.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (onPageChange) onPageChange(currentPage + 1);
-    });
+    const nextLink = nextArrow.querySelector('a')
+    nextLink.addEventListener('click', event => {
+      event.preventDefault()
+      if (onPageChange) onPageChange(currentPage + 1)
+    })
 
-    paginationList.appendChild(nextArrow);
+    paginationList.appendChild(nextArrow)
   }
 }

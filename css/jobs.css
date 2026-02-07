@@ -224,7 +224,7 @@
   cursor: pointer;
   margin-bottom: 0.6rem;
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     appearance: none;
     width: 2rem;
     height: 2rem;
@@ -240,7 +240,7 @@
     }
 
     &:checked::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 7px;
       top: 4px;
