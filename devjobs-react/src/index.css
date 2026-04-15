@@ -19,6 +19,12 @@ body {
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: inherit;
+}
+
 .devjobs-logo {
   color: var(--tertiary-color);
   width: 32px;
